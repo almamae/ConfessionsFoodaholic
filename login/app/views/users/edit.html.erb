@@ -1,0 +1,41 @@
+	<!-- slider holder -->
+<div class="home-slider">
+	<h2 class="prof-heading">Profile</h2>
+	
+	<%= form_for @user do |f| %>
+	<table class="profile">
+		<tr>
+
+		<td class= "fieldname">	<%= f.label :name, "Name" %></td>
+		<td><%= f.text_field :name %></td>
+		</tr>
+		<tr>
+		<td class= "fieldname">	<%= f.label :email %></td>
+		<td>	<%= f.text_field :email %></td>
+		</tr>
+		<tr>
+		<td class= "fieldname">	<%= f.label :facebook, "Facebook Account" %></td>
+		<td><%= f.text_field :facebook %></td>
+		</tr>
+		<tr>
+		<td class= "fieldname">	<%= f.label :twitter, "Twitter Account"%></td>
+		<td><%= f.text_field :twitter %></td>
+		</tr>
+		<tr>
+		<td class= "fieldname">	<%= f.label :g_plus, "G+ Account"%></td>
+		<td><%= f.text_field :g_plus %></td>
+		</tr>
+		<tr>
+		<td class= "fieldname">	<%= f.label :user_type, "User Type"%></td>
+		<td><%= f.text_field :user_type %></td>
+		</tr>
+		<tr>
+		<td class= "fieldname">	<%= f.label :occupation, "Occupation"%></td>
+		<td><%= f.text_field :occupation %></td>
+		</tr>
+		<tr>
+			<%= f.submit "Save" %>
+		</tr>
+	</table>
+	<% end %>
+</div>

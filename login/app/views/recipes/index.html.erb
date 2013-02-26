@@ -1,0 +1,25 @@
+<div class=" home-slider">
+
+  <h1>Requested recipes</h1>
+
+  <table>
+    <tr>
+      <th>Recipe Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <td><%= recipe.name %></td>
+      <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+      <td><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to 'New Recipe', new_recipe_path %>
+</div>

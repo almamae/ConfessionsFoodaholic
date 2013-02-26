@@ -1,0 +1,12 @@
+<h4>My Pages</h4>
+	<ul>
+		<% if(User.authadmin(current_user.email))%>
+			<li><%= link_to "Recent Approved Posts", recent_approved_path%></li>
+			<li><%= link_to "Unapproved Posts", unapproved_path%></li>
+			<li><%= link_to "List of Reported Users", reported_path %></li>
+			<li>Recipe Requests</li>
+		<% end %>
+		<li><%= link_to "Profile", user_path(current_user) %></li>
+		<li><%= link_to "My Posts", myposts_path %></li>        
+		<li><%= link_to "Request Recipe", new_recipe_path %></li>
+	</ul>

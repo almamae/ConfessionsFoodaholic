@@ -1,0 +1,17 @@
+
+<div class=" home-slider">
+	<% @posts.each do |post|%>
+		<%if post.isApproved == 1%>
+			<article>
+				<div class="post"><a href="#"><h5><%= link_to post.title, post %></h5></a>
+					<p> <%= post.content%></p>
+					<p><em><%= post.created_at %></em></p>
+				</div>
+				<div class="meta">
+					<div class="user"><%= 	User.find(post.user_id).email %></div>
+					<div class="categories"><em><%= post.category %></em></div>
+				</div> <hr />
+			</article>
+		<% end %>
+	<% end %><br/>
+</div>

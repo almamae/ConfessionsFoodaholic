@@ -1,0 +1,11 @@
+<h4>Profile</h4>
+<%= form_tag do %>
+ 	<p>
+		<%= label_tag :email %><br/ >
+		<%= text_field_tag :email, current_user.email %>
+	</p>
+	<p>
+		<%= submit_tag "Save", update_post_path %>
+	</p>
+
+<% end %>

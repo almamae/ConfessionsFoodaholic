@@ -1,0 +1,20 @@
+
+	<% @posts.each do |post|%>
+	<article>
+	<div class="post-content"><a href="#"><h5><%= link_to post.title, post %></h5><em>Posted on <%= post.created_at.to_date.to_s %></em></a>
+		<p> <%= truncate post.content, length: 160 %>
+			<% if post.content.length > 160 %>
+			<a href="posts/<%= post.id%>">read more &#8594;</a>
+			<% end %>
+		</p>	
+	</div>
+	<div class="meta">
+		<div class="user"><%= 	User.find(post.user_id).email %></div>
+		<div class="categories"><em><%= post.category %></em></div>
+		<div class="comments"><a href="posts/<%= post.id %>"><%= post.comments.count()%> comments </a></div>
+	</div>
+	<hr />
+	</article>
+	<% end %>
+	<div>
+	<%= will_paginate @posts%></div>
