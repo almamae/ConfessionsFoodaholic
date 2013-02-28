@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FoodaholicConfessions</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="navbar">
+		  <div class="navbar-inner">
+	    	<form class="navbar-search pull-left">
+  				<input type="text" class="search-query" placeholder="Search">
+			</form>
+	    	<ul class="nav">
+		      <li ><%= link_to "Home", posts_path%></li>
+		      <li ><%= link_to "About", about_path%></li>
+              
+
+			  <li >
+
+				 <ul class="nav ">
+				 	<% if(current_user) %>
+				 	<li class="dropdown">
+				    <a class="dropdown-toggle"
+				       data-toggle="dropdown"
+				       href="#">
+               			Hi,<%= current_user.email %>
+				        <b class="caret"></b>
+				      </a>
+				    <ul class="dropdown-menu">
+				      <% if(current_user.user_type == "admin")%>
+				      	<%= render 'admin/adminpages'%>
+				      <% end %>
+
+				    </ul>
+				  </li>
+               		<li><%= link_to "Logout", logout_path, method: :delete%></li>
+               <% else %>
+				  <li class="dropdown">
+				    <a class="dropdown-toggle"
+				       data-toggle="dropdown"
+				       href="#">
+				        Sign-up
+				        <b class="caret"></b>
+				      </a>
+				    <ul class="dropdown-menu">
+				      <li> <%= render 'users/sign-up'%></li>
+				    </ul>
+				  </li>
+  				  <li class="dropdown">
+				    <a class="dropdown-toggle"
+				       data-toggle="dropdown"
+				       href="#">
+				        Login
+				        <b class="caret"></b>
+				      </a>
+				    <ul class="dropdown-menu">
+				      <li>  <form action="/login" method="post">
+    <input name="email" type="text"  placeholder="email address"/>
+    <input name="password" type="password"  placeholder="password"/>
+    <input name="submit" type="submit" value="Login">
+  </form></li>
+				    </ul>
+				  </li>
+				</ul>
+				</li>
+				<%end%>
+			</ul>
+			</div>
+	
+	  	  </div>
+		
+
+ 
+	<header class="jumbotron subhead" id="overview">
+	  	<div class="container">
+			<%= image_tag "logo.jpg"%>
+	  	</div>
+  	</header>
+  	<div class="flash">
+        <% flash.each do |key, value| %>
+          <p><%= value %></p>
+         <% end %>
+         </div>
+     <div id="slider-holder" class="clearfix">    
+	  <div class=" home-slider">
+
+	  			<%= yield %>
+		    </div>
+		   
+	  			<%= render 'partials/sidebar'%>
+	        
+	</div>
+</body>
+</html>

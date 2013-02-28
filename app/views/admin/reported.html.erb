@@ -1,0 +1,11 @@
+<div>
+		<article>
+		<% @users.each do |user|%>
+			<h5><%= link_to user.email, user%></h5>
+			<%= link_to "Delete User", user, :confirm => "Are you sure?", :method => :delete %></p>
+			<p>Member since <%= user.created_at %> </p>
+			<hr />
+		<% end %>
+	</article>
+		
+	</div>

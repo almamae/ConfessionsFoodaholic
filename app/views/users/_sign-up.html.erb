@@ -1,0 +1,15 @@
+  <%= form_for [User.new] do |f| %>
+      <fieldset class="form-signin">
+        <% if flash[:alert] %>
+          <p id="notice"><%= flash[:alert] %></p>
+        <% end %>
+        <%= f.text_field :email, :placeholder => "email address"%>
+        <%= f.password_field :password, :placeholder => "password"%>
+        <%= f.password_field :password_confirmation,:placeholder => "confirm password"%>
+<!--         <input name="email" type="text"  placeholder="email address"/>
+    <input name="password" type="password"  placeholder="password"/>
+    <input name="password_confirmation" type="password"  placeholder="confirm password"/>
+ -->        <%= f.submit("Sign-up")%>
+      </fieldset>
+    <% end %>
+    

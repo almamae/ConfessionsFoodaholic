@@ -1,8 +1,0 @@
-<%= form_for [@parent, @comment] do |f| %>
-   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <p>
-    <%= f.text_area :content %>
-  </p>
-  
-  <p><%= f.submit 'Comment' %></p>
-<% end %>

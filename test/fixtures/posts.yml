@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  content: MyString
+  category: MyString
+  isApproved: 1
+  caption: MyString
+  file_name: MyString
+  file_type: MyString
+  data: 
+
+two:
+  title: MyString
+  content: MyString
+  category: MyString
+  isApproved: 1
+  caption: MyString
+  file_name: MyString
+  file_type: MyString
+  data: 

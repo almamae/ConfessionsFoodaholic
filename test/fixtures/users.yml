@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  email: MyString
+  fname: MyString
+  lname: MyString
+  mname: MyString
+  password_has: MyString
+  password_salt: MyString
+  occupation: MyString
+  twitter: MyString
+  facebook: MyString
+  g_plus: MyString
+  isBanned: 1
+  isReported: 1
+  dateReported: 2013-02-27 16:52:46
+  user_type: MyString
+
+two:
+  email: MyString
+  fname: MyString
+  lname: MyString
+  mname: MyString
+  password_has: MyString
+  password_salt: MyString
+  occupation: MyString
+  twitter: MyString
+  facebook: MyString
+  g_plus: MyString
+  isBanned: 1
+  isReported: 1
+  dateReported: 2013-02-27 16:52:46
+  user_type: MyString

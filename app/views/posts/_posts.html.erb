@@ -1,0 +1,26 @@
+
+	<% @posts.each do |post|%>
+	<article>
+	<div class="post"><a href="#"><h5><%= link_to post.title, post %></h5><em>Posted on <%= post.created_at.to_date.to_s %></em></a><%= image_tag url_for(:action => 'show_image', :id => post.id), :size => "50x60" %>
+		<p> <%= truncate post.content, length: 160 %>
+			<% if post.content.length > 160 %>
+			<a href="posts/<%= post.id%>">read more &#8594;</a>
+			<% end %>
+		</p>	
+	</div>
+	<div class="meta">
+		<div class="user"><%= 	link_to User.find(post.user_id).email, user_path(:id => post.user_id) %></div>
+		<div class="categories"><em><%= link_to post.category, showcategory_path(:controller=>'posts',:category => post.category) %></em></div>
+		<div class="comments"><a href="posts/<%= post.id %>"><%= post.comments.count()%> comments </a></div>
+		<%if current_user%>
+		<div class="like">
+			<%= toggle_like_button(post, current_user)%> 
+		<%end%>
+			<%= like_counter(post)%></div>
+
+	</div>
+	<hr />
+	</article>
+	<% end %>
+	<div>
+	<%= will_paginate @posts%></div>

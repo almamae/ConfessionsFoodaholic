@@ -1,0 +1,26 @@
+ <h2 class="prof-heading">Profile</h2> <% if current_user && current_user.id == @user.id %><div class="edit"><%= link_to "Edit Profile", edit_user_path(current_user)%></div><% end %>
+
+    <table class="profile">
+      
+      <tr class="input-block-level">
+          <td class= "fieldname">Name</td> <td>: <%= @user.fname %> </td>
+      </tr><br/>
+
+      <tr class="input-block-level">
+          <td class= "fieldname">Email</td> <td>: <%= @user.email %> </td>  
+      </tr>
+
+      <tr class="input-block-level">
+          <td class= "fieldname">Facebook Account</td> <td>: <%= @user.facebook %></td>  
+      </tr>
+
+      <tr class="input-block-level">
+          <td class= "fieldname">Twitter Account</td> <td>: <%= @user.facebook %></td>  
+      </tr>
+
+      <tr class="input-block-level">
+          <td class= "fieldname">Google+ Account</td> <td>: <%=@user.g_plus %></td>  
+      </tr>
+
+ 
+    </table> 
