@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :caption, :category, :content, :data, :file_name, :file_type, :isApproved, :title, :user_id, :recipe_id, :uploaded_picture
   belongs_to :user
-  CATEGORIES = [  "Dish",  "Pastry", "Dessert", "Appetizer"] 
+  CATEGORIES = ["Dish",  "Pastry", "Dessert", "Appetizer"] 
   has_many :comments, :as => :commentable, :dependent => :destroy
   validates_presence_of :content, :title, :category, :on => :create 
   validates :category, :inclusion => CATEGORIES

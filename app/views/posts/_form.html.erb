@@ -16,26 +16,22 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="form-container">
     <div class="title">
-      <%= f.label :title %>
-      <%= f.text_field :title, :size=>60 %>
+      <%= f.text_field :title, :size=>60, :placeholder => 'Title' %>
     </div> &nbsp;&nbsp;&nbsp;
     <div class="recipe">
       <% if Recipe.exists? %>
-      <%= f.label :recipe_id %>
-      <%= f.collection_select :recipe_id, Recipe.all, :id, :name , :size=>60%>
+      <%= f.collection_select :recipe_id, Recipe.all, :id, :name , :size=>60, :placeholder =>'Recipe' %>
       <% end %>
       <%= link_to "Add new recipe", new_recipe_path%>
     </div>
     <div class="category">
-      <%= f.label :category %>
-      <%= f.select(:category, Post::CATEGORIES) %>
+      <%= f.select(:category, Post::CATEGORIES, :placeholder => 'Category') %>
       </div>
     <div >
-      <%= f.label :content %>
-      <%= f.text_area :content, :cols => "20", :rows => "5", :class => "textarea" %>
+      <%= f.text_area :content, :cols => "20", :rows => "5", :class => "textarea", :placeholder => 'Post instructions' %>
     </div>
     <div>
-      Caption: <%= f.text_field("caption") %><br/>
+      <%= f.text_field :caption,:placeholder => 'Say something about the picture' %><br/>
       Upload your picture: <%= f.file_field("uploaded_picture") %>
     </div>  
     <div >

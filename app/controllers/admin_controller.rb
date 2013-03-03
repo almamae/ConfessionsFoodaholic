@@ -16,4 +16,9 @@ class AdminController < ApplicationController
 			render "unapproved"
 		end
 	end
+
+	def recent_approved
+		@posts = Post.where(:isApproved => 1).paginate(:per_page => 6, :page => params[:page]) 
+		
+	end
 end
