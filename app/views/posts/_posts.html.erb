@@ -8,7 +8,7 @@
 			<a href="posts/<%= post.id%>">read more &#8594;</a>
 			<% end %>
 		</p>	
-	<em>Posted on <%= post.created_at.to_date.to_s %></em>
+	<em>Posted on <%= post.created_at.to_date.to_s(:default) %></em>
 	</div>
 	<div  class="meta">
 		<div class="user"><%= 	link_to User.find(post.user_id).email, user_path(:id => post.user_id) %></div>
@@ -24,6 +24,13 @@
 			<%= report_user(post)%> 
 		</div>
 
+	</div>
+	<div id="accordion">
+		<div>
+			<ul>
+				<%= render :partial => 'comments/comment', :collection => @post.comments %>
+			</ul>
+		</div>
 	</div>
 	</div>
 	<% end %>
