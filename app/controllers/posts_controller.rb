@@ -64,7 +64,7 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		
 		if @post.update_attributes(params[:post])	
-			redirect_to myposts_path, :notice =>"Your post has been updated"
+			redirect_to myposts_path(:id => current_user.id), :notice =>"Your post has been updated"
 		else
 			render "edit"
 		end
@@ -79,7 +79,7 @@ class PostsController < ApplicationController
 
 	def myposts
 		authorize
-		@posts = current_user.posts.order("created_at desc").paginate(:per_page => 2, :page => params[:page]) 
+		@posts = Post.where(:id => params[:id]).order("created_at desc").paginate(:per_page => 2, :page => params[:page]) 
 	end
 
 	def pastry

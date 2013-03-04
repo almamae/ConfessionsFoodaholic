@@ -1,0 +1,21 @@
+<div id="sliderFrame">
+    <div id="ribbon"></div>
+    <div id="slider">
+        <a href="http://www.menucool.com/jquery-slider" target="_blank">
+            <img src="images/image-slider-1.jpg" alt="Welcome to Confessions of Foodaholic" />
+        </a>
+        <% @images = Post.all%>
+        <% @images.each do |image|%>
+  <!--       <%= image_tag "613-calamares-613squid_19870708.jpg"%>
+        <%= image_tag "630thinkstock_adobo-resize.jpg"%>
+        <%= image_tag "2012621-filipino-food.jpg"%>
+        <%= image_tag "75100026-native-filipino.jpg"%>
+        <%= image_tag "3225238304_b362966fe1.jpg"%>
+   -->  
+        <a href="/posts/<%= image.id%>"><%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => image.id, :size => "100x100", :crop => :fill) %>
+        <%end%>
+    </div>
+    <div id="htmlcaption" style="display: none;">
+        <em>HTML</em> caption. Link to <a href="http://www.google.com/">Google</a>.
+    </div>
+</div>

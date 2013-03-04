@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     		session[:user_id] = @user.id
         	redirect_to posts_path, :notice => "Signed up! Please update your profile." 
         else 
-        	render 'new'
+        	redirect_to home_path
         end
 	end
 

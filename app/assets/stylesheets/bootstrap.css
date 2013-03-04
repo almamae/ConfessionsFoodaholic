@@ -291,6 +291,11 @@ a:hover {
   width: 940px;
 }
 
+.container-slider{
+  width:940px;
+  height:500px;
+}
+
 .span12 {
   width: 940px;
 }

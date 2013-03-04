@@ -7,16 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="navbar">
+	<div class="navbar navbar-inverse navbar-fixed-top">
 		  <div class="navbar-inner">
+		  	<a class="brand" href="<%= home_path %>">	<%= image_tag "logo.jpg"%></a>
 	    	<form class="navbar-search pull-left">
   				<input type="text" class="search-query" placeholder="Search">
 			</form>
 	    	<ul class="nav">
 		      <li ><%= link_to "Home", posts_path%></li>
 		      <li ><%= link_to "About", about_path%></li>
-              
-
 			  <li >
 
 				 <ul class="nav ">
@@ -31,8 +30,9 @@
 				    <ul class="dropdown-menu">
 				      <% if(current_user.user_type == "admin")%>
 				      	<%= render 'admin/adminpages'%>
+				      <% else %>
+				        <%= render 'user/memberpages'%>
 				      <% end %>
-
 				    </ul>
 				  </li>
                		<li><%= link_to "Logout", logout_path, method: :delete%></li>
@@ -70,28 +70,31 @@
 			</div>
 	
 	  	  </div>
-		
-
- 
-	<header class="jumbotron subhead" id="overview">
-	  	<div class="container">
-			<%= image_tag "logo.jpg"%>
-	  	</div>
-  	</header>
-  	<div class="flash">
-        <% flash.each do |key, value| %>
-          <p><%= value %></p>
-         <% end %>
-    </div>
-    <div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span2" id="sidebar">
-      <%= render 'partials/sidebar'%>
-    </div>
-    <div class="span10">
-      <%= yield%>
-    </div>
-  </div>
-</div>
+  	  	<div class="flash">
+	        <% flash.each do |key, value| %>
+	          <p><%= value %></p>
+	         <% end %>
+	    </div>
+	    <% if @user.errors.any? %>
+	        <div class="error_messages">
+	          <h4>Form is invalid</h4>
+	          <ul>
+	            <% for message in @user.errors.full_messages %>
+	              <li><%= message %></li>
+	            <% end %>
+	          </ul>
+	        </div>
+	        <% end %>
+	    <div class="container-fluid">
+		  <div class="row-fluid">
+		    <div class="span3 bs-docs-sidebar">
+		      <%= render 'partials/sidebar'%>
+		    </div>
+		    <div class="span9">
+		  	  <%= yield%>
+		    </div>
+		  </div>
+		</div>
+	
 </body>
 </html>

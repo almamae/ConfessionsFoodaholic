@@ -1,14 +1,14 @@
 FoodaholicConfessions::Application.routes.draw do
   
   controller :sessions do
-    get 'login' => :new
+    #get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
 
   controller :users do
     post 'sign-up' => :create
-    get 'signup' => :new
+    # get 'signup' => :new
   end
 
   resources :users do
