@@ -31,7 +31,7 @@
 				      <% if(current_user.user_type == "admin")%>
 				      	<%= render 'admin/adminpages'%>
 				      <% else %>
-				        <%= render 'user/memberpages'%>
+				        <%= render 'users/memberpages'%>
 				      <% end %>
 				    </ul>
 				  </li>
@@ -75,16 +75,6 @@
 	          <p><%= value %></p>
 	         <% end %>
 	    </div>
-	    <% if @user.errors.any? %>
-	        <div class="error_messages">
-	          <h4>Form is invalid</h4>
-	          <ul>
-	            <% for message in @user.errors.full_messages %>
-	              <li><%= message %></li>
-	            <% end %>
-	          </ul>
-	        </div>
-	        <% end %>
 	    <div class="container-fluid">
 		  <div class="row-fluid">
 		    <div class="span3 bs-docs-sidebar">
