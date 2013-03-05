@@ -1,5 +1,7 @@
-<%= render 'partials/slider'%>	
+<br/>
 <%if current_user%>
- 	<%= render 'form'%>
+	<a href="#newpost" class="linknew"> Add new Post</a>
+
+	<div id = "formnew"> <%= render 'form'%></div>
  <% end %>
 <%= render 'posts' %>

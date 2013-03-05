@@ -1,12 +1,11 @@
 module PostsHelper
 	def toggle_like_button(post,user)
-		if current_user
-			if user.flagged?(post, :like)
+		
+			if user && user.flagged?(post, :like)
 				link_to "Unlike", like_post_path(post)
 			else
 				link_to "Like", like_post_path(post)
 			end
-		end
 	end
 
 	def like_counter(post)
@@ -31,8 +30,6 @@ module PostsHelper
 	end
 
 	def report_user(post)
-		if(current_user && current_user.id != post.user_id)
-			link_to "Report user", url_for(:controller => 'users', :method=>'post',:action => 'report', :id => post.user_id)
-		end 
+			link_to "Report user", url_for(:controller => 'users', :method=>'post',:action => 'report', :id => post.user_id) 
 	end
 end

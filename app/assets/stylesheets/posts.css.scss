@@ -1,3 +1,7 @@
+#formnew{
+	display:none;
+}
+
 #sidebar{
 	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
 	-moz-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
@@ -32,15 +36,27 @@ margin-right:11px;
 .meta .comments{
 	border-left: 1px solid #cecece;	
 	border-right: 1px solid #cecece;
-	background: url(icon-comments.png) no-repeat;
+	background: url(glyphicons_309_comments.png) no-repeat;
+}
+
+.meta .likes{
+	border-right: 1px solid #cecece;
+	background: url(glyphicons_343_thumbs_up.png) no-repeat;
+}
+
+.meta .report{
+	border-right: 1px solid #cecece;
+	background: url(glyphicons_266_flag.png) no-repeat;
 }
 
  .meta .user{
-	background: url(icon-user.png) no-repeat;
+	border-left: 1px solid #cecece;	
+	border-right: 1px solid #cecece;
+	background: url(glyphicons_003_user.png) no-repeat;
 }
 
  .meta .categories{
-	background: url(icon-tags.png) no-repeat;
+	background: url(glyphicons_066_tags.png) no-repeat;
 }
 
  .meta .categories,
