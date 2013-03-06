@@ -45,18 +45,22 @@ class PostsController < ApplicationController
 
 	def like
 		@current_user = current_user
-		@post = Post.find(params[:id]) 
-		if @current_user.flagged?(@post, :like)
-			@current_user.unflag(@post, :like)
-			@post.decrement(:likescount)
-			@post.save	
-		else
-			@current_user.flag(@post, :like)
-			@post.increment(:likescount)
-			@post.save
-		end
+		@post = Post.find(params[:id])
+		if current_user
 
-		redirect_to post_path(@post)
+			if @current_user.flagged?(@post, :like)
+				@current_user.unflag(@post, :like)
+				@post.decrement(:likescount)
+				@post.save	
+			else
+				@current_user.flag(@post, :like)
+				@post.increment(:likescount)
+				@post.save
+			end
+			redirect_to post_path(@post)
+		else 
+			redirect_to post_path(@post), :notice => "Please log in."
+		end
 	end
 	
 	def update

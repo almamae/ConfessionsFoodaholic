@@ -3,7 +3,7 @@ module PostsHelper
 		
 			if user && user.flagged?(post, :like)
 				link_to "Unlike", like_post_path(post)
-			else
+			else 
 				link_to "Like", like_post_path(post)
 			end
 	end
