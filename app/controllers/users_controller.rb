@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	skip_before_filter :authorize, only:[:show,:index,:report,:update,:destroy]
+	skip_before_filter :authorize, only:[:show,:index,:update,:destroy]
 
 	def new
   		@user = User.new 
@@ -37,10 +37,12 @@ class UsersController < ApplicationController
 
   	def report
 	    authorize
-	    @user = User.find(params[:id])
-	    @user.isReported = 1;
-	    @user.save
-	    redirect_to posts_path
+	    if current_user
+		    @user = User.find(params[:id])
+		    @user.isReported = 1;
+	    	@user.save
+	    	redirect_to posts_path
+	    end
   	end
   
   	def update
