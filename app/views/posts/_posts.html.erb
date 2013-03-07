@@ -13,7 +13,7 @@
 	<div  class="meta">
 		<div class="user"><%= 	link_to User.find(post.user_id).email, user_path(:id => post.user_id) %></div>
 		<div class="categories"><em><%= link_to post.category, showcategory_path(:controller=>'posts',:category => post.category) %></em></div>
-		<div class="comments"><a href="#viewcomment"><%= post.comments.count()%> comments </a></div>
+		<div class="comments"><a href="posts/<%= post.id %>"><%= post.comments.count()%> comments </a></div>
 		<div class="likes">
 			<%= toggle_like_button(post, current_user)%> 
 			<%= like_counter(post)%></div>
@@ -25,7 +25,7 @@
 	<div id="accordion">
 		<div>
 			<ul>
-				<%= render :partial => 'comments/comment', :collection => post.comments %>
+				<%= render :partial => 'comments/comment', :collection => @post.comments %>
 			</ul>
 		</div>
 	</div>

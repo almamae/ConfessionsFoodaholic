@@ -3876,8 +3876,9 @@ input[type="submit"].btn.btn-mini {
   border-color: #bce8f1;
 }
 
-.alert-info h4 {
+.alert-info p {
   color: #3a87ad;
+  text-align: center;
 }
 
 .alert-block {

@@ -68,12 +68,15 @@
 			</div>
 	
 	  	  </div>
-  	  	<div class="flash">
+	  	<div class="flash">
 	        <% flash.each do |key, value| %>
-	          <p><%= value %></p>
+	         <div class="alert alert-info">
+	    		<p><%= value %></p>
+	    	</div>
 	         <% end %>
 	    </div>
-	    <div class="container-fluid">
+		
+  	  	<div class="container-fluid">
 		  <div class="row-fluid">
 		    <div class="span9">
 		  	  <%= yield%>

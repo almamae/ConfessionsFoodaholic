@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_filter :get_parent, :authorize
 
   def new
+    @parent_comment = Comment.find_by_id(params[:comment_id])
     @comment =  @parent.comments.build(params[:comment]) 
   end
 

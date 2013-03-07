@@ -1,0 +1,20 @@
+<div class="span10">
+<div id="comment-1" class="comment-body clearfix">	
+		<img alt='' src='http://0.gravatar.com/avatar/4f64c9f81bb0d4ee969aaf7b4a5a6f40?s=35&amp;d=&amp;r=G' class='avatar avatar-35 photo' height='35' width='35' /> 
+		<div class="comment-author vcard"><%= User.find(@parent_comment.user_id).email%></div>
+		<div class="comment-meta commentmetadata">
+			<span class="comment-date"><%= @parent_comment.created_at.to_date.to_s(:default) %></span>
+		</div>
+		<div class="comment-inner">
+		    <%= @parent_comment.content %>
+		</div>
+</div>
+	<%= form_for [@parent, @comment] do |f| %>
+   <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <%= f.text_area :content, :cols => "10", :rows => "5", :class => "textarea", :placeholder => "Post reply"%>
+  </p>
+  
+  <p><%= f.submit 'Reply' %></p>
+<% end %>
+</div>
