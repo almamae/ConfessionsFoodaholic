@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   make_flaggable :like
 
   validates_format_of :file_type,
-    :with => /^image/,
+    :with => /^video/,
     :message => "--- you can only upload pictures",
     :allow_blank => true
 
