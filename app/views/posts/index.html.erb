@@ -1,7 +1,30 @@
-<br/>
-<%if current_user%>
-	<a href="#newpost" class="linknew"> Add new Post</a>
 
-	<div id = "formnew"> <%= render 'form'%></div>
- <% end %>
-<%= render 'posts' %>
+<div class="container-fluid" id="header">
+	<div class="row" > 
+		<%= render 'partials/slider'%>	
+	</div>
+</div>
+<div class="container-fluid" id="header">
+	<div class="row" > 
+		<div class="span3" id="categ">Pastries</div>		
+		<div class="span3" id="categ"> Desserts </div>	
+		<div class="span3" id="categ"> Dishes </div>		
+		<div class="span3" id="categ"> Appetizers</div>
+	</div>
+</div>
+<br/>
+<br/>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3"><%= render 'partials/sidebar'%></div>
+
+		<div class="span9">
+			<%if current_user%>
+				<a href="#newpost" class="linknew"> Add new Post</a>
+
+				<div id = "formnew"> <%= render 'form'%></div>
+			<% end %>
+			<%= render 'posts' %>
+		</div>
+	</div>
+</div>
