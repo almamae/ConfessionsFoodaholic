@@ -12,9 +12,9 @@ module PostsHelper
 		like_counter = post.flaggings.count
 		if like_counter != 0
 			if like_counter > 1
-				 " (#{post.flaggings.count} likes)"
+				 " (#{post.like_counter} likes)"
 			else
-				 " (#{post.flaggings.count} like)"
+				 " (#{post.like_counter} like)"
 			end
 		end		
 	end

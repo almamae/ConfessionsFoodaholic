@@ -51,11 +51,11 @@ class PostsController < ApplicationController
 
 			if @current_user.flagged?(@post, :like)
 				@current_user.unflag(@post, :like)
-				@post.decrement(:likescount)
+				@post.decrement(:like_counter)
 				@post.save	
 			else
 				@current_user.flag(@post, :like)
-				@post.increment(:likescount)
+				@post.increment(:like_counter)
 				@post.save
 			end
 			redirect_to post_path(@post)

@@ -2,7 +2,7 @@
 	<% @posts.each do |post|%>
 	<div class="span10">
 	<div class="post">
-	<p><span class="title"><%= link_to post.title, post %></span>  <span class="admin_action"><ul class="options"><li class="dropdown"><a class="dropdown-toggle"
+	<p><span class="title"><%= link_to post.title, post %></span> <br/> <span class="admin_action"><ul class="options"><li class="dropdown"><a class="dropdown-toggle"
 				       data-toggle="dropdown"
 				       href="#">Options	<b class="caret"></b>
 </a><ul class="dropdown-menu"><li><%= adminapprove(post)%></li><li><%= deletepost(post)%></li></ul></li></ul></span></p><br/><%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => post.id) %>
