@@ -16,7 +16,7 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="form-container">
     <div class="title">
-      <%= f.text_field :title, :size=>60, :placeholder => 'Title' %>
+      <%= f.text_field :title, :size=>50, :placeholder => 'Title' %>
     </div> &nbsp;&nbsp;&nbsp;
     <div class="recipe">
       <% if Recipe.exists? %>
@@ -31,8 +31,8 @@
       <%= f.text_area :content, :cols => "20", :rows => "5", :class => "textarea", :placeholder => 'Post instructions' %>
     </div>
     <div>
-      <%= f.text_field :caption,:placeholder => 'Say something about the picture' %><br/>
-      Upload your picture: <%= f.file_field("uploaded_picture") %>
+      <%= f.text_field :caption,:placeholder => 'Caption' %><br/>
+      Upload video/picture: <%= f.file_field("uploaded_picture") %>
     </div>  
     <div >
       <%= f.submit %>

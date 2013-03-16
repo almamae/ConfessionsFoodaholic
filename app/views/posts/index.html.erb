@@ -6,10 +6,10 @@
 </div>
 <div class="container-fluid" id="header">
 	<div class="row" > 
-		<div class="span3" id="categ">Pastries</div>		
-		<div class="span3" id="categ"> Desserts </div>	
-		<div class="span3" id="categ"> Dishes </div>		
-		<div class="span3" id="categ"> Appetizers</div>
+		<div class="span3" id="categ"><%= link_to "Pastries", showcategory_path(:category => 'Pastry')%></div>		
+		<div class="span3" id="categ"><%= link_to "Desserts", showcategory_path(:category => 'Dessert')%></div>	
+		<div class="span3" id="categ"><%= link_to "Dishes", showcategory_path(:category => 'Dish')%></div>		
+		<div class="span3" id="categ"><%= link_to "Appetizer", showcategory_path(:category => 'Appetizer')%></div>
 	</div>
 </div>
 <br/>
@@ -19,11 +19,14 @@
 		<div class="span3"><%= render 'partials/sidebar'%></div>
 
 		<div class="span9">
-			<%if current_user%>
-				<a href="#newpost" class="linknew"> Add new Post</a>
-
-				<div id = "formnew"> <%= render 'form'%></div>
-			<% end %>
+			<div class="row">
+			<div class="span 9">
+				<%if current_user%>
+					<a href="#newpost" id="linknew" class="badge badge-info">ADD NEW POST</a>
+					<div id = "formnew"> <%= render 'form'%></div>
+				<% end %>
+			</div>
+			</div>
 			<%= render 'posts' %>
 		</div>
 	</div>

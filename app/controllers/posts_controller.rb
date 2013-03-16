@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
-	skip_before_filter :authorize, only: [:new, :create,:edit,:destroy]
+	skip_before_filter :authorize, only: [:new, :create,:edit,:destroy, :approve]
 
 	def index 
 		 @post = Post.new
-		 @posts = Post.order("created_at desc").paginate(:per_page => 5, :page => params[:page])
-		# @posts = Post.showcategory("Dish").paginate(:per_page => 5, :page => params[:page])
+		 @posts = Post.search(params[:search]).order("created_at desc").paginate(:per_page => 5, :page => params[:page])
+		 
 	end
-	
+
+
 	def show
 		@post = Post.find(params[:id])
 		@parent = @post
@@ -62,6 +63,16 @@ class PostsController < ApplicationController
 			redirect_to post_path(@post), :notice => "Please log in."
 		end
 	end
+
+	def approve
+		@post = Post.find(params[:id]) 
+		@post.isApproved = 1
+		if @post.save	
+			redirect_to unapproved_path, :notice =>"Your post has been approved"
+		else
+			redirect_to unapproved_path, :notice =>"Post not approved"
+		end
+	end
 	
 	def update
 		authorize
@@ -86,27 +97,8 @@ class PostsController < ApplicationController
 		@posts = Post.where(:id => params[:id]).order("created_at desc").paginate(:per_page => 2, :page => params[:page]) 
 	end
 
-	def pastry
-		@posts = Post.where(:category => "Pastry").paginate(:per_page => 5, :page => params[:page])
-		if(@posts.nil?)
-			redirect_to pastry_path :notice => "No available post in Pastry."
-		end
-	end
-
 	def showcategory
+		@post = Post.new		 
 		@posts = Post.where(:category => params[:category]).paginate(:per_page => 5, :page => params[:page])
-	end	
-
-	def dish
-		# @posts = Post.showcategory("Dish").paginate(:per_page => 5, :page => params[:page])
-
-	end
-
-	def appetizer
-		# @posts = Post.showcategory("Appetizer").paginate(:per_page => 5, :page => params[:page])
-	end
-
-	def dessert
-		# @posts = Post.showcategory("dessert").paginate(:per_page => 5, :page => params[:page])
 	end	
 end

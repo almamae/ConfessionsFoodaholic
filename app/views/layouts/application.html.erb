@@ -10,9 +10,12 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		  <div class="navbar-inner">
 		  	<a class="brand" href="<%= home_path %>">	CONFESSIONS OF FOODAHOLIC &nbsp; </a>
-	    	<form class="navbar-search pull-left">
+	    	<!-- <form class="navbar-search pull-left">
   				<input type="text" class="search-query" placeholder="Search">
-			</form>
+			</form> -->
+			 <%= form_tag posts_path, :method => 'get', :class => "navbar-search pull-left" do %>
+                    <%= text_field_tag :search, params[:search], :class=>"search-query", :placeholder=>"Search" %>
+             <% end %>
 	    	<ul class="nav">
 		      <li ><%= link_to "Home", posts_path%></li>
 		      <li ><%= link_to "About", about_path%></li>

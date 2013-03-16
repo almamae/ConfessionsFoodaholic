@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   make_flaggable :like
 
   validates_format_of :file_type,
-    :with => /^video/,
+    :with => /^image/ || /^video/,
     :message => "--- you can only upload pictures",
     :allow_blank => true
 
@@ -21,6 +21,15 @@ class Post < ActiveRecord::Base
   def base_part_of(file_name)
     File.basename(file_name).gsub(/[^\w._-]/, '')
   end
+
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 
   def post
     return @post if defined?(@post)

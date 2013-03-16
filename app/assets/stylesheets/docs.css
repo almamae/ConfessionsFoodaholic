@@ -789,9 +789,7 @@ form.bs-docs-example {
           box-shadow: 0 1px 4px rgba(0,0,0,.065);
 }
 .bs-docs-sidenav > li > a {
-  display: block;
   width: 190px \9;
-  margin: 0 0 -1px;
   padding: 8px 14px;
   border: 1px solid #e5e5e5;
 }
@@ -827,12 +825,12 @@ form.bs-docs-example {
 .bs-docs-sidenav a:hover .icon-chevron-right {
   opacity: .5;
 }
-.bs-docs-sidenav .active .icon-chevron-right,
+/*.bs-docs-sidenav .active .icon-chevron-right,
 .bs-docs-sidenav .active a:hover .icon-chevron-right {
   background-image: url(../img/glyphicons-halflings-white.png);
   opacity: 1;
 }
-.bs-docs-sidenav.affix {
+*/.bs-docs-sidenav.affix {
   top: 40px;
 }
 .bs-docs-sidenav.affix-bottom {

@@ -27,6 +27,8 @@ gem 'will_paginate', '~> 3.0'
 gem 'make_flaggable', :git => 'git://github.com/cavneb/make_flaggable.git'
 gem "paperclip-ffmpeg", "~> 0.10.2"
 
+gem "heroku"
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

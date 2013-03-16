@@ -31,18 +31,23 @@ FoodaholicConfessions::Application.routes.draw do
   
   controller :posts do
     get 'show_image' => :show_image
-    put 'posts/:id/approve' => :approve
     get 'myposts' => :myposts
   end
     
     resources :posts do #, :has_many => :comments, :shallow => true 
       resources :comments
-    end
+     end
 
+  resources :admin do
+    member do
+      get 'approve'
+    end
+  end
   # match ':posts(/:showcategory(/:category))'
   resources :posts do
     member do
       get 'like'
+      get 'approve'
     end
   end
 

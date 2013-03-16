@@ -21,12 +21,19 @@ module PostsHelper
 
 	def adminapprove(post)
 		if current_user && current_user.user_type == "admin" && post.isApproved == 0
-			 link_to "Approve", approve_path(:id => post.id), :method=>'post'
-			 printf "|"
+			 link_to "Approve", url_for(:controller => 'admin', :method => 'post', :action => 'approve', :id => post.id)
+			# link_to "Delete", post, :confirm => "Are you sure?", :method => :delete
 		end
-		if current_user && (post.user_id == current_user || current_user.user_type == "admin")
+
+		# if current_user && (current_user.user_type == "admin" || current_user.id == post.user_id) 
+		# 	link_to "Delete", post, :confirm => "Are you sure?", :method => :delete
+		# end
+	end
+
+	def deletepost(post)
+		if current_user && (current_user.user_type == "admin" || current_user.id == post.user_id) 
 			link_to "Delete", post, :confirm => "Are you sure?", :method => :delete
-		end
+		end		
 	end
 
 	def report_user(post)

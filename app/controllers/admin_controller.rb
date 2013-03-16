@@ -8,13 +8,12 @@ class AdminController < ApplicationController
 	end
 
 	def approve
-		@post = Post.find(params[:id]) 
-		@post.isApproved = 1
-		if @post.save	
-			redirect_to unapproved_path, :notice =>"Your post has been approved"
-		else
-			render "unapproved"
-		end
+		if current_user
+		    @post = Post.find(params[:id])
+		    @post.isApproved = 1;
+	    	@post.save
+	    	redirect_to posts_path
+	    end
 	end
 
 	def recent_approved

@@ -1,5 +1,5 @@
 $(function(){
-	$(".linknew").click(function(){
+	$("#linknew").click(function(){
 		$("#formnew").show();
 	});
 });
