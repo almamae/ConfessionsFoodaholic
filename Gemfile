@@ -19,9 +19,9 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
-
+gem 'jquery-rails', '~> 2.1'
+gem 'thor','>=0.14.4'
+# gem 'nifty-generators'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'will_paginate', '~> 3.0'
 gem 'make_flaggable', :git => 'git://github.com/cavneb/make_flaggable.git'

@@ -1,3 +1,38 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.recipes{
+	font-family: serif;
+  	font-weight: bold;
+  	font-size: 20px;
+  	margin:0px;
+	background-color:rgba(162, 171, 166, 0.4);
+	background-image: repeating-radial-gradient(-24% 100%, ellipse closest-side, rgba(162, 171, 166, 0.4), rgba(194, 179, 255, 0.6) -6%)
+}
+
+.namelabel{
+	float:left;
+	width:250px;
+}
+
+.optionsrec{
+	float:right;
+	width:200px;
+}
+#newrecform{
+  display:none;
+}
+
+.rec-heading {
+ font-weight: normal;
+  text-align: left;
+  background-color: #FFFFFF;
+  color: rgba(21, 12, 102, 0.7);
+  font-family: Georgia, serif;
+  font-size: 32px;
+  line-height: 140%;
+  text-shadow: 0px 0px 3px #2C2833, 2.0px 1.0px 1.0px #293033;
+  column-count:2;
+  column-width:10px;
+ 
+}

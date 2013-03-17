@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
   helper_method :current_user
   before_filter :set_cache_buster
 
@@ -29,8 +28,8 @@ class ApplicationController < ActionController::Base
   end
 
   def isadmin
-    unless current_user.user_type == "admin"
-      redirect_to home_url
+    unless current_user && current_user.user_type == "admin"
+      redirect_to home_url, :notice => "Sorry, cannot go to the page you requested. Only admins are allowed."
     end    
   end
 end

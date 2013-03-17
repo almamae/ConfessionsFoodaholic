@@ -1,0 +1,52 @@
+<%= form_for @user do |f| %>
+      <fieldset class="form-update">
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h4>Form is invalid</h4>
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <p id="notice"><%= flash[:alert] %></p>
+        <% end %>
+
+        <h2 class="form-update-heading"><div align="center">Edit Profile</div></h2>
+
+         <div align="center"><div class="input-block-level"></div>
+          <%= f.label :fname,  'Name' %>
+          <%= f.text_field :fname %>
+        </div>
+
+        <div align="center"><div class="input-block-level"></div>
+          <%= f.label :email,  'Email' %>
+          <%= f.text_field :email %>
+        </div>
+
+        <div align="center"><div class="input-block-level"></div>
+          <%= f.label :facebook,  'Facebook' %>
+          <%= f.text_field :facebook %>
+        </div>
+
+         <div align="center"><div class="input-block-level"></div>
+          <%= f.label :twitter,  'Twitter' %>
+          <%= f.text_field :twitter %>
+        </div>
+
+        <div align="center"><div class="input-block-level"></div>
+          <%= f.label :g_plus,  'Google Plus' %>
+          <%= f.text_field :g_plus %>
+        </div>
+
+        <div align="center"><div class="button"></div>
+            <%= f.submit"Update"%>
+        </div>
+      <div>
+     </div>
+      </fieldset>
+
+
+    <% end %>

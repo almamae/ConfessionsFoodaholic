@@ -1,4 +1,4 @@
-FoodaholicConfessions::Application.routes.draw do
+Confessions::Application.routes.draw do
   
   controller :sessions do
     #get 'login' => :new

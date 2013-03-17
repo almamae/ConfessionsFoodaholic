@@ -1,9 +1,13 @@
- <h2 class="prof-heading">Profile</h2> <% if current_user && current_user.id == @user.id %><div class="edit"><%= link_to "Edit Profile", edit_user_path(current_user)%></div><% end %>
 
     <table class="profile">
+
+      <h2 class="prof-heading"><div align="center">My Profile</div></h2>  
+      <% if current_user.id == @user.id%>
+      <div align="center"><%= link_to "Edit Profile", edit_user_path(@user)%></div> 
+      <% end %>
       
       <tr class="input-block-level">
-          <td class= "fieldname">Name</td> <td>: <%= @user.fname %> </td>
+      <td class="fieldname" <div align="center">Name</div></td><td>: <%= @user.fname %> </td>
       </tr><br/>
 
       <tr class="input-block-level">
@@ -21,6 +25,7 @@
       <tr class="input-block-level">
           <td class= "fieldname">Google+ Account</td> <td>: <%=@user.g_plus %></td>  
       </tr>
-
+     <div>
+     </div>
  
     </table> 

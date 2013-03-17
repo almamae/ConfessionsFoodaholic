@@ -10,6 +10,80 @@
 /* Body and structure
 -------------------------------------------------- */
 
+html, body {height: 100%;}
+
+#wrap {min-height: 100%;}
+
+#main {overflow:auto;
+  padding-bottom: 180px;}  /* must be same height as the footer */
+
+#footer {position: relative;
+  margin-top: -180px; /* negative value of footer height */
+  height: 180px;
+  clear:both;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+
+} 
+
+/*Opera Fix*/
+body:before {/* thanks to Maleika (Kohoutec)*/
+content:"";
+height:100%;
+float:left;
+width:0;
+margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+}
+
+
+#footer_outer {
+  min-height:100px;
+ background-color: #111111;
+
+}
+#footer_sitemap {
+    float:left;
+    width:240px;
+  }
+    #footer_sitemap ul {
+      list-style:none;
+      margin-left:4px;
+    }
+    #footer_sitemap li {
+      background:url(/images/bullet-arrow.png) no-repeat 0 6px;
+      padding-left:15px;
+      margin:9px 0;
+    }
+    #footer_sitemap li a {
+      display:block;
+      text-shadow: 1px 1px 0 #000;
+    }
+#footer_twitter {
+    /*float:left;*/
+    margin-right:auto;
+    margin-left:auto;
+    width:200px;
+    font-style:italic;
+  }
+    #footer_twitter .bird {
+      /*float:left;*/
+      margin:3px 3px 0 0;
+    }
+    #footer_twitter .tweet {
+      display:block;
+      width:100%;
+      text-shadow: 1px 1px 0 #000;
+    }
+    #footer_twitter .social {
+      margin-top:25px;
+    }
+      #footer_twitter .social img {
+        margin-right:15px;
+      }
+
 body {
   position: relative;
   padding-top: 40px;
@@ -300,11 +374,8 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 -------------------------------------------------- */
 
 .footer {
-  text-align: center;
-  padding: 30px 0;
-  margin-top: 70px;
-  border-top: 1px solid #e5e5e5;
-  background-color: #f5f5f5;
+  position : absolute;
+  bottom : 0;
 }
 .footer p {
   margin-bottom: 0;

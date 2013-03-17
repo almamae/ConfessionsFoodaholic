@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
-  attr_accessible :caption, :category, :content, :data, :file_name, :file_type, :isApproved, :title, :user_id, :recipe_id, :uploaded_picture
-  belongs_to :user
+  attr_accessible :category, :content, :data, :file_name, :file_type, :isApproved, :title, :user_id, :recipe_id, :uploaded_picture, :video_url, :content_type
+  belongs_to :user, :foreign_key => "user_id"
+  belongs_to :recipe
   CATEGORIES = ["Dish",  "Pastry", "Dessert", "Appetizer"] 
   has_many :comments, :as => :commentable, :dependent => :destroy
   validates_presence_of :content, :title, :category, :on => :create 

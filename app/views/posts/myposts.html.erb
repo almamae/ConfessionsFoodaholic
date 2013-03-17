@@ -1,1 +1,8 @@
+<% if @posts.blank? %>
+<div class="alert alert-info">
+	<p>You don't have any post yet.</p>
+</div>
+<% else %>
+
 <%= render 'posts'%>
+<% end %>

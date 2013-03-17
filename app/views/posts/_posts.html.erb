@@ -2,11 +2,22 @@
 	<% @posts.each do |post|%>
 	<div class="span10">
 	<div class="post">
-	<p><span class="title"><%= link_to post.title, post %></span> <br/> <span class="admin_action"><ul class="options"><li class="dropdown"><a class="dropdown-toggle"
-				       data-toggle="dropdown"
-				       href="#">Options	<b class="caret"></b>
-</a><ul class="dropdown-menu"><li><%= adminapprove(post)%></li><li><%= deletepost(post)%></li></ul></li></ul></span></p><br/><%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => post.id) %>
-		<p> <%= post.content%>
+	<p><span class="title"><%= link_to post.title, post %></span> <div class="btn-group" id="optbutton">
+  <button class="btn btn-mini">Options</button>
+  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <!-- dropdown menu links -->
+    <li><%= adminapprove(post)%></li>
+    <li><% if current_user && current_user.id == post.user_id %>
+		 <%= link_to "Edit",edit_post_path(post)%>
+		 <%end%>
+	</li>
+    <li><%= deletepost(post)%></li>
+  </ul>
+</div><br/></p><%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => post.id) %>
+		<p> <%= truncate post.content, :length => 160%>
 			<% if post.content.length > 160 %>
 			<a href="posts/<%= post.id%>">read more &#8594;</a>
 			<% end %>

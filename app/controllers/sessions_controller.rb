@@ -10,7 +10,11 @@ class SessionsController < ApplicationController
 	  else
 		  if user
 		    session[:user_id] = user.id
-		    redirect_to :back, :notice => "Logged in!"
+		  	if user.user_type == "admin" 
+		  		redirect_to recent_approved_path
+		  	else
+			    redirect_to :back, :notice => "Logged in!"
+			end
 		  else
 		   # flash.now.alert = "Invalid email or password"
 		    redirect_to :back, :notice => "Invalid email or password"
@@ -21,6 +25,6 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session[:user_id] = nil
-  		redirect_to home_url, :notice => "Logged out!"	
+  		redirect_to home_path, :notice => "Logged out!"	
 	end
 end

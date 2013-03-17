@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+	before_filter :authorize, :isadmin
+
 	def unapproved
 		@posts = Post.where(:isApproved => 0).paginate(:per_page => 6, :page => params[:page]) 
 	end
@@ -12,7 +14,7 @@ class AdminController < ApplicationController
 		    @post = Post.find(params[:id])
 		    @post.isApproved = 1;
 	    	@post.save
-	    	redirect_to posts_path
+	    	redirect_to :back
 	    end
 	end
 

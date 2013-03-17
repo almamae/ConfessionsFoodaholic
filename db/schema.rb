@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304124833) do
+ActiveRecord::Schema.define(:version => 20130317055204) do
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -43,15 +43,18 @@ ActiveRecord::Schema.define(:version => 20130304124833) do
     t.string   "title"
     t.string   "content"
     t.string   "category"
-    t.integer  "isApproved",                    :default => 0
+    t.integer  "isApproved",                      :default => 0
     t.string   "caption"
     t.string   "file_name"
     t.string   "file_type"
-    t.binary   "data",       :limit => 6291456
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.binary   "data",         :limit => 6291456
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.integer  "recipe_id"
     t.integer  "user_id"
+    t.integer  "like_counter",                    :default => 0
+    t.string   "video_url"
+    t.string   "content_type"
   end
 
   create_table "recipes", :force => true do |t|

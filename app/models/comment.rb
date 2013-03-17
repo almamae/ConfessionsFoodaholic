@@ -6,6 +6,5 @@ class Comment < ActiveRecord::Base
   def post
     return @post if defined?(@post)
     @post = commentable.is_a?(Post) ? commentable : commentable.post
-  end
-  
+  end 
 end

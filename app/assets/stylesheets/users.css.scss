@@ -1,3 +1,65 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.profile{
+	margin-left:auto; 
+    margin-right:auto;
+    width:400px;
+
+	$blue: #3bbfce;
+	$margin: 16px;
+
+	font-family: serif;
+  	font-weight: bold;
+  	font-size: 1.0em;
+
+ 	border-color: $blue;
+  	color: darken($blue, 20%);
+
+	
+	background:#00FFFF ;
+	
+
+}
+.fieldname{
+	font-family: serif;
+  	font-weight: regular;
+  	font-size: 1.2em;
+
+  	$black: #000000;
+	$margin: 16px;
+
+	border-color: $black;
+  	color: darken($black, 20%);	
+}
+
+.profile a{
+	font-family: serif;
+  	font-weight: regular;
+  	font-size: 1.0em;
+
+  	$blue: #3bbfce;
+	$margin: 16px;
+
+  	color: darken($blue, 20%); 	
+}
+
+.form-update{
+	margin-left:auto; 
+    margin-right:auto;
+    width:450px;
+	background-color:rgba(162, 171, 167, 0.4);
+	background-image: repeating-radial-gradient(-24% 100%, circle contain, rgba(162, 171, 167, 0.4), rgba(211, 204, 255, 0.6) -6%);
+	font-family: serif;
+  	font-weight: bold;
+  	font-size: 1.0em;
+  	border:transparent;
+	
+}
+
+.prof-heading{
+	font-family: serif;
+  	
+}
+
+

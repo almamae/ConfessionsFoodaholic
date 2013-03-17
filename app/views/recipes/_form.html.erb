@@ -1,21 +1,32 @@
-<%= form_for(@recipe) do |f| %>
-  <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
 
-      <ul>
-      <% @recipe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for @recipe do |f| %>
+      <fieldset class="form-update">
+      <% if @recipe.errors.any? %>
+        <div class="error_messages">
+          <h4>Form is invalid</h4>
+          <ul>
+            <% for message in @recipe.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <p id="notice"><%= flash[:alert] %></p>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :name,"Recipe Name" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit("Request/Add Recipe") %>
-  </div>
-<% end %>
+        <h2 class="form-update-heading"><div align="center">Recipe Form</div></h2>
+
+         <div align="center"><div class="input-block-level"></div>
+          <%= f.label :name,  'Recipe' %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div align="center"><div class="button"></div>
+            <%= f.submit%>
+        </div>
+        <br/>
+      <div>
+     </div>
+      </fieldset>
+    <% end %>

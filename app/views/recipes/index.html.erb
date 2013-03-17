@@ -1,0 +1,51 @@
+
+
+<div class="span12">
+  <% if @recipes.blank?%>
+  <div class="alert alert-info">
+    <p>No recipes yet.</p>
+  </div>
+  <% end %>
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3" >  
+      <%= render 'admin/adminpages'%>
+    </div>
+    <div class="span9">
+  <div class="span10">
+      <div>
+      <h3 class="rec-heading">  Recipe Requests</h3>
+          
+          <% if current_user %>
+            <span class="newrecipe"><a href="#newrecipe">Add New Recipe</a></span>
+            <div id="newrecform"><% @recipe = Recipe.new%> <%= render 'form'%></div>
+          <% end %>
+
+          <%  @recipes.each do |recipe|%>
+          <div class="post">
+          <div class="recipes"> 
+              <span class="namelabel"><%= recipe.name%></span>
+              <span class="optionsrec">
+              <% if current_user && current_user.user_type == "admin" %>             
+                <%= link_to "Edit", edit_recipe_path(recipe)%> | <%= link_to "Delete", recipe, :confirm => "Are you sure?", :method => :delete%>
+              <% end %>
+              </span>
+          </div><br/>
+          </div>
+        <% end %>
+       </div>   
+       </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

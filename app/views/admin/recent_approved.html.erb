@@ -1,1 +1,17 @@
-<%= render 'posts/posts'%>
+<div class="span12">
+	<% if @posts.blank?%>
+	<div class="alert alert-info">
+		<p>No posts yet.</p>
+	</div>
+	<% end %>
+</div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3" >	
+			<%= render 'adminpages'%>
+		</div>
+		<div class="span9">
+			<%= render 'posts/posts' %>	
+		</div>
+	</div>
+</div>

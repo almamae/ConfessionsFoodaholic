@@ -8,14 +8,21 @@
 		<div class="span3" id="categ"><%= link_to "Pastries", showcategory_path(:category => 'Pastry')%></div>		
 		<div class="span3" id="categ"><%= link_to "Desserts", showcategory_path(:category => 'Dessert')%></div>	
 		<div class="span3" id="categ"><%= link_to "Dishes", showcategory_path(:category => 'Dish')%></div>		
-		<div class="span3" id="categ"><%= link_to "Appetizer", showcategory_path(:category => 'Appetizer')%></div>
+		<div class="span3" id="categ"><%= link_to "Appetizers", showcategory_path(:category => 'Appetizer')%></div>
 	</div>
 </div>
 <br/>
 <br/>
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span3"><%= render 'partials/sidebar'%></div>
+		<div class="span3" >	
+			<h4>Featured Posts</h4>
+			<% @featured.each do |f|%>
+				<div id="featured"><%= link_to f.title, f %><br/>
+					<%= truncate f.content, :length => 100%>
+				</div>
+			<% end %>
+		</div>
 		<div class="span9">
 			<div class="row">
 			<div class="span 9">
@@ -24,7 +31,13 @@
 				<% end %>
 			</div>
 			</div>
-			<%= render 'posts' %>
+			<% if @posts.blank?%>
+				<div class="alert alert-info">
+					<p>No available post for this category.</p>
+				</div>
+			<% else %>
+				<%= render 'posts' %>
+			<% end %>
 		</div>
 	</div>
 </div>

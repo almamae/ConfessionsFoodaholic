@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   		 
   		if @user.save
     		session[:user_id] = @user.id
-        	redirect_to posts_path, :notice => "Signed up! Please update your profile." 
+        	redirect_to posts_path, :notice => "Welcome to Confessions of Foodaholic! Please update your profile." 
         else 
         	redirect_to home_path
         end
@@ -39,17 +39,20 @@ class UsersController < ApplicationController
 	    authorize
 	    if current_user
 		    @user = User.find(params[:id])
-		    @user.isReported = 1;
-	    	@user.save
-	    	redirect_to posts_path
+	    	if current_user.id == @user.id
+				redirect_to :back, :notice => "You cannot report yourself."		    		
+	    	else
+			    @user.isReported = 1;
+			    @user.dateReported = Time.now
+		    	@user.save
+		    	redirect_to :back, :notice => "Successfully reported user"
+		    end
 	    end
   	end
   
   	def update
 	    authorize
 	    @user = User.find(params[:id])
-    
-
 	    respond_to do |format|
 	      if @user.update_attributes(params[:user])
 	        format.html { redirect_to user_path(@user), notice: 'Your profile was successfully updated.' }
@@ -60,7 +63,6 @@ class UsersController < ApplicationController
 	      end
 	    end
   	end
-
   	def destroy
 	    authorize
 	    @user = User.find(params[:id])

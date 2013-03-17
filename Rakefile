@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-FoodaholicConfessions::Application.load_tasks
+Confessions::Application.load_tasks

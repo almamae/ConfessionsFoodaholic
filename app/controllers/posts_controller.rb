@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 	def index 
 		 @post = Post.new
 		 @posts = Post.search(params[:search]).order("created_at desc").paginate(:per_page => 5, :page => params[:page])
-		 
+		 @featured = Post.find(:all, :order =>"like_counter desc", :limit => 5)		 
 	end
 
 
@@ -27,6 +27,13 @@ class PostsController < ApplicationController
 		if params[:post]
 			params[:post][:recipe_id] = params[:recipe_id]
 			@post = Post.new(params[:post])
+		end
+		if @post.video_url != ""
+			@post.content_type = "vid"
+		elsif !@post.file_type.nil?
+			@post.content_type = "pic"
+		else  
+			@post.content_type = "blog"
 		end
 		if @post.save
 			redirect_to myposts_path, :notice => "Your post was saved"
@@ -65,6 +72,7 @@ class PostsController < ApplicationController
 	end
 
 	def approve
+		isadmin
 		@post = Post.find(params[:id]) 
 		@post.isApproved = 1
 		if @post.save	
@@ -95,10 +103,12 @@ class PostsController < ApplicationController
 	def myposts
 		authorize
 		@posts = Post.where(:id => params[:id]).order("created_at desc").paginate(:per_page => 2, :page => params[:page]) 
+
 	end
 
 	def showcategory
 		@post = Post.new		 
+	 	@featured = Post.find(:all, :order =>"like_counter desc", :limit => 5)		 
 		@posts = Post.where(:category => params[:category]).paginate(:per_page => 5, :page => params[:page])
 	end	
 end

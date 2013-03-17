@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FoodaholicConfessions</title>
+  <title>Confessions of Foodaholic</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		  <div class="navbar-inner">
 		  	<a class="brand" href="<%= home_path %>">	CONFESSIONS OF FOODAHOLIC &nbsp; </a>
@@ -22,6 +23,9 @@
 			  <li >
 
 				 	<% if(current_user) %>
+				 		<%if current_user.user_type == "admin"%>
+				 			<li><%= link_to "Admin", recent_approved_path%></li>
+				 		<% else%>
 				 	<li class="dropdown">
 				    <a class="dropdown-toggle"
 				       data-toggle="dropdown"
@@ -30,13 +34,10 @@
 				        <b class="caret"></b>
 				      </a>
 				    <ul class="dropdown-menu" id= "options">
-				      <% if(current_user.user_type == "admin")%>
-				      	<%= render 'admin/adminpages'%>
-				      <% else %>
 				        <%= render 'users/memberpages'%>
-				      <% end %>
 				    </ul>
 				  </li>
+				  <% end %>
                		<li><%= link_to "Logout", logout_path, method: :delete%></li>
                <% else %>
 				  <li class="dropdown">
@@ -78,8 +79,41 @@
 	    	</div>
 	         <% end %>
 	    </div>
+	<div id="wrap">
 	
 	<%= yield%>
+
+
+	</div>
+
+</div>
+<!-- 	<footer class="footer">
+		﻿
+	</footer>
+ -->
+
+
+<div id="footer">
+	<div id="footer_outer">
+		    <div id="footer_twitter"> 
+		    	<div id="twitter">
+			        <h3>&nbsp;&nbsp;Contact Us</h3>
+				    <div id="tweet"></div>
+			    </div>
+		      	<p class="social"><a href="http://twitter.com/FoodConfessed"><%= image_tag "twitter.png" %></a>
+		      	 
+			      	<a href="http://www.facebook.com/pages/Confessions-of-a-Foodaholic/583641244981681">
+			      	<%= image_tag "facebook.png" %> </a>
+
+			      	<a href="https://plus.google.com/117878414345525087291">
+			      	<%= image_tag "google+.png" %> </a>
+		      </p>
+
+			</div>
+			<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright © 2013 - Confessions of a Foodaholic Based on Twitter Bootstrap- All rights reserved.
+		</div>
+</div>
 	
 </body>
 </htm>
