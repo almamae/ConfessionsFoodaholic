@@ -1,6 +1,37 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.username{
+  width:300px;
+  display:inline-block;
+}
+
+.username a{
+  text-decoration:none;
+  color: #5a5a5a;
+  font-size:18px;
+}
+
+.username a:hover{
+   color:#E170DB;
+}
+
+.useroption{
+  width:200px;
+  display:inline-block;
+}
+#banned a{
+  font-style:italic;
+}
+.useroption{
+  font-size:18px;
+}
+.userlist{
+  margin-left:50px;
+  width:700px;
+}
+
 .profile{
 	margin-left:auto; 
     margin-right:auto;

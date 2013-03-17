@@ -1,0 +1,60 @@
+
+
+<!-- <div class="span12">
+  <% if @users.blank?%>
+  <div class="alert alert-info">
+    <p></p>
+  </div>
+  <% end %>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3" >  
+      <%= render 'admin/adminpages'%>
+    </div>
+    <div class="span9">
+  <div class="row">
+        <div class="span9">
+          <div class="userlist">
+          <h3 class="rec-heading">  List of Users</h3>
+          
+
+          <%  @users.each do |user|%>
+
+
+ 
+                      <% if user.isBanned == 0 %>
+
+                      <div class="username">
+                        <%= link_to user.email, user%>
+                      </div>
+                      <div class="useroption">
+                        <%= link_to "Delete", user, :confirm => "Are you sure?", :method => :delete%> | <%= link_to "Ban", url_for(:confirm=>"Are you sure",:controller => 'admin',:method => 'post', :action => 'ban', :id => user.id)%>
+                       </div> 
+    
+                       <% else %>
+                         <div class="username" id="banned">
+                            <a><em><%= user.email%></em></a>
+                          </div>
+                          <div class="useroption" id="banned">
+                            <%= link_to "Delete", user, :confirm => "Are you sure?", :method => :delete%> | 
+                            <a><em>Banned</em></a>
+                          </div>   
+                        <%end%> 
+                  <br/>
+          <% end %>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

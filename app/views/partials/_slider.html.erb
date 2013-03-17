@@ -5,7 +5,7 @@
    <div class="item active">
       <%= image_tag "foodaholic.jpg"%>
     </div>
-    <% @images = Post.all%>
+    <% @images = Post.where(:content_type=>"pic").order("like_counter")%>
     <% @images.each do |image|%>
         <div class="item">
             <a href="/posts/<%= image.id%>"><%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => image.id, :size => "100x100", :crop => :fill) %>

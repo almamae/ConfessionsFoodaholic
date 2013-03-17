@@ -26,6 +26,8 @@ Confessions::Application.routes.draw do
       get 'recent_approved' => :recent_approved
       get  'unapproved' => :unapproved
       post 'approve' => :approve
+      get 'ban' => :ban
+      post 'ban' => :ban
       get  'reported' => :reported
   end
   

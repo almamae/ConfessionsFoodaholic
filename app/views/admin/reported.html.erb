@@ -2,26 +2,26 @@
 
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span3" id="sidebar">	
+		<div class="span3">	
 			<%= render 'adminpages'%>
 		</div>
 		<div class="span9">
 			<div class="row">
-			<div class="span 9">
 				<% if @users.blank?%>
-				<div class="alert alert-info">
-					<p>No reported users.</p>
-				</div>
-			<% else %>
-				<% @users.each do |user|%>
-					<h5><%= link_to user.email, user%></h5>
-					<%= link_to "Delete User", user, :confirm => "Are you sure?", :method => :delete %></p>
-					<p>Member since <%= user.created_at %> </p>
-					<hr />
-				<% end %>
-			<% end %>
-				
-			</div>
+					<div class="alert alert-info">
+						<p>No reported users.</p>
+					</div>
+				<% else %>
+					<% @users.each do |user|%>
+					<div class="span9">
+						<h5><%= link_to user.email, user%></h5>
+						<p><%= link_to "Delete User", user, :confirm => "Are you sure?", :method => :delete %></p>
+						<p>Member since <%= user.created_at %> </p>
+						<hr />
+					</div>
+					<% end %>
+
+				<% end %>			
 			</div>
 		</div>
 	</div>

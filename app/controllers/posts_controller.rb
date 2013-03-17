@@ -35,8 +35,9 @@ class PostsController < ApplicationController
 		else  
 			@post.content_type = "blog"
 		end
+
 		if @post.save
-			redirect_to myposts_path, :notice => "Your post was saved"
+			redirect_to :back, :notice => "Your post was saved"
 		else 
 			render "new"
 		end	
@@ -87,7 +88,7 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		
 		if @post.update_attributes(params[:post])	
-			redirect_to myposts_path(:id => current_user.id), :notice =>"Your post has been updated"
+			redirect_to myposts_path, :notice =>"Your post has been updated"
 		else
 			render "edit"
 		end
@@ -97,13 +98,12 @@ class PostsController < ApplicationController
 		authorize
 		@post = Post.find(params[:id])
 		@post.destroy
-		redirect_to myposts_path :notice=> "Your post has been deleted"
+		redirect_to :back, :notice=> "Post was successfully deleted."
 	end	
 
 	def myposts
 		authorize
-		@posts = Post.where(:id => params[:id]).order("created_at desc").paginate(:per_page => 2, :page => params[:page]) 
-
+		@posts = Post.where(:user_id => current_user.id).order("created_at desc").paginate(:per_page => 5, :page => params[:page]) 
 	end
 
 	def showcategory

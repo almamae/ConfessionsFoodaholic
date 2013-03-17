@@ -25,9 +25,11 @@ class Post < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where('title LIKE ?', "%#{search}%")
+      where(:conditions => ["title LIKE ?  AND isApproved = ?", "%#{search}%", 1])
+        # where('title LIKE ?' , "%#{search}%")
     else
-      scoped
+      where(:isApproved => 1)
+      # scoped
     end
   end
 

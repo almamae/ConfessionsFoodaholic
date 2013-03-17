@@ -26,11 +26,13 @@
 		<div class="span9">
 			<div class="row">
 					<%if current_user%>
-						&nbsp;&nbsp;&nbsp;&nbsp;<a href="#newpost" id="newblog" class="badge badge-info">ADD NEW BLOG</a> <a href="#newpost" id="newvid" class="badge badge-info">ADD NEW VIDEO</a> <a href="#newpost" id="newpic" class="badge badge-info">ADD NEW PICTURE</a>
-						<div id = "formnew"> <%= render 'form'%></div>
+						<div>
+							&nbsp;&nbsp;&nbsp;&nbsp;<a href="#newpost" id="newblog" class="badge badge-info">ADD NEW BLOG</a> <a href="#newpost" id="newvid" class="badge badge-info">ADD NEW VIDEO</a> <a href="#newpost" id="newpic" class="badge badge-info">ADD NEW PICTURE</a>
+							<div id = "formnew"> <%= render 'form'%></div>
+						</div>
 					<% end %>
 				<%= render 'posts' %>
-				</div>			
+			</div>			
 			<!-- </div> -->
 		</div>
 	</div>

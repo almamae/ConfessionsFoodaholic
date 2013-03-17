@@ -6,16 +6,25 @@ class AdminController < ApplicationController
 	end
 
 	def reported
-		@users = User.where(:isReported => 1) 	
+		@users = User.where(:isReported => 1) 
 	end
 
 	def approve
 		if current_user
 		    @post = Post.find(params[:id])
-		    @post.isApproved = 1;
+		    @post.isApproved = 1
 	    	@post.save
 	    	redirect_to :back
 	    end
+	end
+
+	def ban
+		if current_user
+		    @user = User.find(params[:id])
+		    @user.isBanned = 1
+	    	@user.save
+	    	redirect_to :back, :notice=>"User banned."
+    	end
 	end
 
 	def recent_approved
