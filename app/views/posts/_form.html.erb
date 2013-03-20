@@ -1,58 +1,43 @@
 
   <%= form_for(@post, :html => { :multipart => true }) do |f| %>
+    <br/>
     <fieldset class="post">
-
-    <% if @post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-        <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <div class="form-container">
+            <%= f.text_field :title, :size=>60, :placeholder => "Enter title..."%>
+            <!-- dropdown menu links -->
+            <%= f.select(:category, Post::CATEGORIES, :placeholder => 'Category') %>
+         <br/>Recipe: 
+        <% if Recipe.exists? %>
+            <%= f.collection_select :recipe_id, Recipe.all, :id, :name , :size=>60, :placeholder =>'Recipe' %>&nbsp;&nbsp;
+          <%= link_to "Add new recipe", new_recipe_path%>
+          <% end %>
+        
+      <div class="posting"> </div>
+        <div class="post-text">
+          <%= f.text_area :content, :cols => "20", :rows => "5", :class => "textarea", :placeholder => 'Enter instructions'%>
+        </div>
+        <div class="post-file">
+          Upload picture: <%= f.file_field("uploaded_picture") %>
+        </div>
+        <div class="post-vid">
+        
+          Enter video url: <%= f.text_field :video_url, :size=>60%>
+        </div>  
+      <div >
+        <%= f.submit %>
       </div>
-    <% end %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <div class="form-container">
-      <div class="btn-group">
-        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Enter Title
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <!-- dropdown menu links -->
-          <li><%= f.text_field :title, :size=>60%></li>
-        </ul>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Select Category
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <!-- dropdown menu links -->
-          <li><%= f.select(:category, Post::CATEGORIES, :placeholder => 'Category') %></li>
-        </ul>
-      </div>
-       <br/>Recipe: 
-      <% if Recipe.exists? %>
-          <%= f.collection_select :recipe_id, Recipe.all, :id, :name , :size=>60, :placeholder =>'Recipe' %>&nbsp;&nbsp;
-        <%= link_to "Add new recipe", new_recipe_path%>
-        <% end %>
-      
-    <div class="posting"> </div>
-      <div class="post-text">
-        <%= f.text_area :content, :cols => "20", :rows => "5", :class => "textarea", :placeholder => 'Enter instructions'%>
-      </div>
-      <div class="post-file">
-        Upload picture: <%= f.file_field("uploaded_picture") %>
-      </div>
-      <div class="post-vid">
-      
-        Enter video url: <%= f.text_field :video_url, :size=>60%>
-      </div>  
-    <div >
-      <%= f.submit %>
     </div>
-  </div>
    </fieldset>
 
   <% end %>

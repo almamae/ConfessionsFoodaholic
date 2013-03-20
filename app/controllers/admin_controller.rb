@@ -18,6 +18,15 @@ class AdminController < ApplicationController
 	    end
 	end
 
+	def make_admin
+		if current_user
+		    @user = User.find(params[:id])
+		    @user.user_type = "admin"
+	    	@user.save
+	    	redirect_to users_path
+	    end
+	end
+
 	def ban
 		if current_user
 		    @user = User.find(params[:id])

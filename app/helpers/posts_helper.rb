@@ -19,6 +19,18 @@ module PostsHelper
 		end		
 	end
 
+	def youtube_embed(youtube_url)
+	  if youtube_url[/youtu\.be\/([^\?]*)/]
+	    youtube_id = $1
+	  else
+	    # Regex from # http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/4811367#4811367
+	    youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+	    youtube_id = $5
+	  end
+
+	   %Q{#{ youtube_id }}
+	end
+  
 	def adminapprove(post)
 		if current_user && current_user.user_type == "admin" && post.isApproved == 0
 			 link_to "Approve", url_for(:controller => 'admin', :method => 'post', :action => 'approve', :id => post.id)

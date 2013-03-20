@@ -28,6 +28,8 @@ Confessions::Application.routes.draw do
       post 'approve' => :approve
       get 'ban' => :ban
       post 'ban' => :ban
+      get 'make_admin' => :make_admin
+      post 'make_admin' => :make_admin
       get  'reported' => :reported
   end
   

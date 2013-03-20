@@ -24,12 +24,13 @@
 
 
  
-                      <% if user.isBanned == 0 %>
+                    <% if user.isBanned == 0 %>
 
                       <div class="username">
                         <%= link_to user.email, user%>
                       </div>
                       <div class="useroption">
+                        <%= link_to "Make admin", url_for(:confirm=>"Are you sure",:controller => 'admin',:method => 'post', :action => 'make_admin', :id => user.id)%>|
                         <%= link_to "Delete", user, :confirm => "Are you sure?", :method => :delete%> | <%= link_to "Ban", url_for(:confirm=>"Are you sure",:controller => 'admin',:method => 'post', :action => 'ban', :id => user.id)%>
                        </div> 
     

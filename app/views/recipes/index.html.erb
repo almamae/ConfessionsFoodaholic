@@ -25,14 +25,14 @@
 
           <%  @recipes.each do |recipe|%>
           <div class="post">
-          <div class="recipes"> 
-              <span class="namelabel"><%= recipe.name%></span>
-              <span class="optionsrec">
-              <% if current_user && current_user.user_type == "admin" %>             
-                <%= link_to "Edit", edit_recipe_path(recipe)%> | <%= link_to "Delete", recipe, :confirm => "Are you sure?", :method => :delete%>
-              <% end %>
-              </span>
-          </div><br/>
+            <div class="recipes"> 
+                <span class="namelabel"><%= recipe.name%></span>
+                  <span class="optionsrec">
+                  <% if current_user && current_user.user_type == "admin" %>             
+                    <%= link_to "Edit", edit_recipe_path(recipe)%> | <%= link_to "Delete", recipe, :confirm => "Are you sure?", :method => :delete%>
+                  <% end %>
+                  </span>
+            </div>
           </div>
         <% end %>
        </div>   

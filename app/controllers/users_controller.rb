@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 	def index
 		@users = User.all
 	end
+
 	def new
   		@user = User.new 
 	end
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
     		session[:user_id] = @user.id
         	redirect_to posts_path, :notice => "Welcome to Confessions of Foodaholic! Please update your profile." 
         else 
-        	redirect_to home_path
+        	redirect_to home_path, :notice => "The passwords don't match or your email is invalid."
         end
 	end
 
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
 
   	def index
     	authorize
-    	@users = User.order("created_at desc")
+    	@users = User.where(:user_type => "unconfirmed member").order("created_at desc")
   	end
 
   	def edit
@@ -67,6 +68,7 @@ class UsersController < ApplicationController
 	      end
 	    end
   	end
+
   	def destroy
 	    authorize
 	    @user = User.find(params[:id])

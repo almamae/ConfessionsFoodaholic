@@ -7,7 +7,6 @@ class PostsController < ApplicationController
 		 @featured = Post.find(:all, :order =>"like_counter desc", :limit => 5)		 
 	end
 
-
 	def show
 		@post = Post.find(params[:id])
 		@parent = @post
@@ -40,7 +39,7 @@ class PostsController < ApplicationController
 		if @post.save
 			redirect_to :back, :notice => "Your post was saved"
 		else 
-			render "new"
+			redirect_to home_url, :notice => "Error in submitting your post. Please fill-up all fields."
 		end	
 	end
 	
