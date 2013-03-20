@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   		 
   		if @user.save
     		session[:user_id] = @user.id
-        	redirect_to posts_path, :notice => "Welcome to Confessions of Foodaholic! Please update your profile." 
+        	redirect_to posts_path, :notice => "Welcome to Confessions of a Foodaholic! Please update your profile." 
         else 
         	redirect_to home_path, :notice => "The passwords don't match or your email is invalid."
         end
