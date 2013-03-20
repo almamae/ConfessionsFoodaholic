@@ -30,6 +30,7 @@ class PostsController < ApplicationController
 		end
 		if @post.video_url != ""
 			@post.content_type = "vid"
+			@post.video_url = youtube_embed(params[:video_url])
 		elsif !@post.file_type.nil?
 			@post.content_type = "pic"
 		else  

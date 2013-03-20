@@ -18,6 +18,18 @@ class Post < ActiveRecord::Base
     self.file_type = file_field.content_type.chomp
     self.data = file_field.read
   end
+
+  def youtube_embed(youtube_url)
+    if youtube_url[/youtu\.be\/([^\?]*)/]
+      self.video_url = $1
+    else
+      # Regex from # http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/4811367#4811367
+      youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      self.video_url = $5
+    end
+
+    # %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
+  end
   
   def base_part_of(file_name)
     File.basename(file_name).gsub(/[^\w._-]/, '')

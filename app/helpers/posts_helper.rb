@@ -39,4 +39,6 @@ module PostsHelper
 	def report_user(post)
 			link_to "Report user", url_for(:controller => 'users', :method=>'post',:action => 'report', :id => post.user_id) 
 	end
+
+
 end
