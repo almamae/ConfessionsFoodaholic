@@ -1,6 +1,6 @@
 
 	<% @posts.each do |post|%>
-	<div class="span9">
+	<div class="span10">
 		<div class="post">
 		<p>
 			<span class="title"><%= link_to post.title, post %></span> 
@@ -12,11 +12,7 @@
   				<ul class="dropdown-menu">
     				<!-- dropdown menu links -->
     				<li><%= adminapprove(post)%></li>
-    				<li><% if current_user && current_user.id == post.user_id %>
-		 					<%= link_to "Edit",edit_post_path(post)%>
-		 				<%end%>
-					</li>
-				    <li><%= deletepost(post)%></li>
+    				<li><%= deletepost(post)%></li>
   				</ul>
 			</div>
 			<br/>
@@ -25,7 +21,7 @@
 				<%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => post.id) %>
 			<% elsif post.content_type == "vid"%>
 				
-				<iframe src=" http://www.youtube.com/embed/<%=youtube_embed(post.video_url)%>"></iframe>
+				<iframe src=" http://www.youtube.com/embed/<%=youtube_embed(post.video_url)%>" style='width:600px;height:350px;'></iframe>
 			<% end %>
 		<p> <%= truncate post.content, :length => 160%>
 			<% if post.content.length > 160 %>
@@ -51,5 +47,3 @@
 		</div>
 	</div>
 	<% end %>
-	<div class="span9">
-	<%= will_paginate @posts%></div>

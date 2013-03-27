@@ -14,8 +14,13 @@
 		
 	<div class="span10">
 	<div class="post">
-	<p><span class="title"><%= link_to @post.title, @post %></span>  <span class="admin_action"><%= adminapprove(@post)%></span></p><br/><%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => @post.id) %>
-		<p> <%= @post.content%></p>	
+	<p><span class="title"><%= link_to @post.title, @post %></span>  <span class="admin_action"><%= adminapprove(@post)%></span></p><br/>
+		<% if @post.content_type == "pic"%>
+			<%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => @post.id) %>
+		<% elsif @post.content_type == "vid"%>
+			<iframe src=" http://www.youtube.com/embed/<%=youtube_embed(@post.video_url)%>"></iframe>
+		<% end %>		
+			<p> <%= @post.content%></p>		
 	<em>Posted on <%= @post.created_at.to_date.to_s(:default) %></em>
 	</div>
 	<div  class="meta">

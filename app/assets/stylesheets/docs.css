@@ -9,7 +9,27 @@
 
 /* Body and structure
 -------------------------------------------------- */
+#recipepage{
+  background-color: rgba(46, 255, 23, 0.3);
+  height:800px;
+}
 
+#recipelist{
+  color: #666666;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 39.0px;
+}
+
+#fontrecipe{
+font-size: 20px;
+margin-left:95px;
+}
+
+#centerrecipe{
+  margin-right: 80px;
+  margin-left: 80px;
+  /*column-count: 2;*/
+}
 html, body {height: 100%;}
 
 #wrap {min-height: 100%;}

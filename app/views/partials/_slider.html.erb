@@ -11,7 +11,7 @@
             <a href="/posts/<%= image.id%>"><%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id => image.id, :size => "100x100", :crop => :fill) %>
             </a>
             <div class="carousel-caption">
-              <h4><%= image.file_name%></h4>
+              <!-- <h4><%= image.file_name%></h4> -->
               <p><%= truncate image.content, :length => 100%></p>
             </div>
         </div>

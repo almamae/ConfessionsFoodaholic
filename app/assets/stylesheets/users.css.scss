@@ -5,12 +5,16 @@
 .username{
   width:300px;
   display:inline-block;
+  font-family: Comic Sans MS;
+  font-size: 15px;
 }
 
 .username a{
   text-decoration:none;
   color: #5a5a5a;
   font-size:18px;
+  font-family: Comic Sans MS;
+font-size: 15px;
 }
 
 .username a:hover{
@@ -18,7 +22,9 @@
 }
 
 .useroption{
+  font-family: Comic Sans MS;
   width:300px;
+  font-size: 15px;
   display:inline-block;
 }
 #banned a{
@@ -80,12 +86,9 @@
 	margin-left:auto; 
     margin-right:auto;
     width:450px;
-	background-color:rgba(162, 171, 167, 0.4);
-	background-image: repeating-radial-gradient(-24% 100%, circle contain, rgba(162, 171, 167, 0.4), rgba(211, 204, 255, 0.6) -6%);
-	font-family: serif;
-  	font-weight: bold;
-  	font-size: 1.0em;
-  	border:transparent;
+      background-color:rgba(162, 171, 166, 0.4);
+  background-image: repeating-radial-gradient(-24% 100%, ellipse closest-side, rgba(162, 171, 166, 0.4), rgba(194, 179, 255, 0.6) -6%)
+
 	
 }
 

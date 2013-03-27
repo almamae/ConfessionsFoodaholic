@@ -1,5 +1,7 @@
 Confessions::Application.routes.draw do
   
+  devise_for :models
+
   controller :sessions do
     #get 'login' => :new
     post 'login' => :create

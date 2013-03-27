@@ -19,7 +19,13 @@
 			<h4>Featured Posts</h4>
 			<% @featured.each do |f|%>
 				<div id="featured"><%= link_to f.title, f %><br/>
-					<%= truncate f.content, :length => 100%>
+					<% if f.content_type == "blog" || f.content_type.nil? %>
+						<%= truncate f.content, :length => 160%>
+					<% elsif f.content_type == "pic" %>
+						<%= image_tag url_for(:controller => 'posts',:action => 'show_image', :id =>f.id) %>
+					<% elsif f.content_type == "vid" %>
+						<iframe src=" http://www.youtube.com/embed/<%=youtube_embed(f.video_url)%>"></iframe>
+					<% end%>
 				</div>
 			<% end %>
 		</div>
@@ -34,7 +40,8 @@
 						<div>
 						</div>
 					<% end %>
-
+				
+				<%= will_paginate @posts%>
 				<%= render 'posts' %>
 			</div>			
 			<!-- </div> -->

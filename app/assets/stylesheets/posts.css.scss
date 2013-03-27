@@ -1,3 +1,14 @@
+#aboutheading{
+	text-align: center;
+}
+
+.aboutpage {
+	margin-left:100px;
+	margin-right:100px;
+	margin-top:60px;
+	text-align: justify;
+}
+
 #formnew{
 	display:none;
 }
@@ -43,7 +54,7 @@
      -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
           box-shadow: 0 1px 4p;
           margin:3px;
-   height: 100px;
+   height: 160px;
    overflow:hidden;
 }
 #featured a{
@@ -110,8 +121,8 @@
 }
 
 .span10 img{
-	width:40%;
-	height:100px;
+	width:600px;
+	height:350px;
 	float:right;
 }
 

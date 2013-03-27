@@ -8,34 +8,39 @@
   <% end %>
 </div>
 
-<div class="container-fluid">
+<div  id="recipepage">
   <div class="row-fluid">
     <div class="span3" >  
+      <% if current_user.user_type == "admin"%>
       <%= render 'admin/adminpages'%>
+      <% end %>
     </div>
     <div class="span9">
   <div class="span10">
-      <div>
-      <h3 class="rec-heading">  Recipe Requests</h3>
-          
+      <div id="recipelist">
+      <h3 align="center">  Recipe Requests</h3>
+      <div >    
           <% if current_user %>
-            <span class="newrecipe"><a href="#newrecipe">Add New Recipe</a></span>
+            <p><span class="newrecipe" id="fontrecipe"><a href="#newrecipe">Add New Recipe</a></span></p>
             <div id="newrecform"><% @recipe = Recipe.new%> <%= render 'form'%></div>
           <% end %>
+      </div>    
 
+      <div id="centerrecipe">
           <%  @recipes.each do |recipe|%>
           <div class="post">
-            <div class="recipes"> 
-                <span class="namelabel"><%= recipe.name%></span>
-                  <span class="optionsrec">
-                  <% if current_user && current_user.user_type == "admin" %>             
-                    <%= link_to "Edit", edit_recipe_path(recipe)%> | <%= link_to "Delete", recipe, :confirm => "Are you sure?", :method => :delete%>
-                  <% end %>
-                  </span>
-            </div>
+          <div class="recipes"> 
+              <span class="namelabel"><%= recipe.name%></span>
+              <span class="optionsrec">
+              <% if current_user && current_user.user_type == "admin" %>             
+                <%= link_to "Edit", edit_recipe_path(recipe)%> | <%= link_to "Delete", recipe, :confirm => "Are you sure?", :method => :delete%>
+              <% end %>
+              </span>
+          </div>
           </div>
         <% end %>
-       </div>   
+      </div>
+       </div>    
        </div>
     </div>
     </div>

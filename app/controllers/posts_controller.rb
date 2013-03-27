@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 	def index 
 		 @post = Post.new
 		 @posts = Post.search(params[:search]).order("created_at desc").paginate(:per_page => 5, :page => params[:page])
-		 @featured = Post.find(:all, :order =>"like_counter desc", :limit => 5)		 
+		 @featured = Post.find(:all, :conditions =>["isApproved == 1"], :order =>"like_counter desc", :limit => 5)		 
 	end
 
 	def show
